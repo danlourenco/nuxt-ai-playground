@@ -1,11 +1,11 @@
 <script setup lang="ts">
 defineProps({
     message: String,
-    isBot: Boolean
+    isUser: Boolean
 });
 </script>
 <template>
-    <div class="chat" :class="isBot ? 'chat-start' : 'chat-end'">
+    <div class="chat" :class="isUser ? 'chat-end' : 'chat-start'">
         <div class="chat-image avatar">
             <div class="w-10 rounded-full">
                 <img alt="Tailwind CSS chat bubble component"
