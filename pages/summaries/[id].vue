@@ -1,8 +1,7 @@
 <script setup lang="ts">
 const route = useRoute()
-const { data, pending, error, refresh } = useFetch('/api/transcription', {
+const { data, pending, error } = useFetch('/api/transcription', {
     method: 'POST',
-    //https://www.youtube.com/watch?v=X4Hcd2lOxmY
     body: { url: `https://www.youtube.com/watch?v=${route.params.id}` }
 });
 </script>
