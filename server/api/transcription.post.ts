@@ -4,13 +4,6 @@ import { loadSummarizationChain } from "langchain/chains";
 import {
   RecursiveCharacterTextSplitter,
 } from "langchain/text_splitter";
-import { PromptTemplate } from "@langchain/core/prompts";
-
-const promptTemplate = PromptTemplate.fromTemplate(
-    `You are an expert at summarizing YouTube videos based on their transcripts.
-    You have been asked to summarize public access television videos uploaded to YouTube. 
-    Please summarize the following video with a focus on the main points and key details.`
-)
 
 export default defineEventHandler(async (event) => {
 
@@ -43,8 +36,6 @@ export default defineEventHandler(async (event) => {
   const chain = loadSummarizationChain(llm, {
     type: "map_reduce",
     verbose: false,
-    // combineMapPrompt: PromptTemplate.fromTemplate(`Summarize the following text in pirate speak.`),
-    // combinePrompt: PromptTemplate.fromTemplate(`Combine the following summaries into a single coherent summary, but using pirate speak.`),
   });
 
   const res = await chain.call({
