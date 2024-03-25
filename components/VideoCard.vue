@@ -2,19 +2,21 @@
 
 interface Props {
     title: string;
-    url: string;
-    imageUrl?: string;
+    description: string;
+    id: string;
+    thumbnail: string;
 }
-defineProps<Props>();
+const props = defineProps<Props>();
+const route = `/summaries/${props.id}`
 </script>
 <template>
     <div class="card w-96 bg-base-100 shadow-xl">
-        <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+        <figure><img :src="props.thumbnail" alt="Shoes" /></figure>
         <div class="card-body">
-            <h2 class="card-title">{{ title }}</h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
+            <h2 class="card-title">{{ props.title }}</h2>
+            <p>{{ props.description }}</p>
             <div class="card-actions justify-end">
-                <NuxtLink :to="url" class="btn btn-primary">Details</NuxtLink>
+                <NuxtLink :to="route" class="btn btn-primary">Details</NuxtLink>
             </div>
         </div>
     </div>
